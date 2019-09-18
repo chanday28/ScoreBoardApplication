@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ScoreBoard_Application.Models.Player_Score>
+@{
+    ViewBag.Title = "ShowPlayerDetails";
+}
+
+<h2>Players/Score Details</h2>
+<p>
+    <div style="width:100%; text-align:right">
+        <a class="btn btn-default" href="../ScoreBoard/Create">Create New</a>
+    </div>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(x => x.PlayerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.Score)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var players in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(x => players.PlayerName)
+            </td>
+            <td>
+                @Html.DisplayFor(x => players.Score)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = players.PlayerScoreId }) |
+                @Html.ActionLink("View", "View", new { id = players.PlayerScoreId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = players.PlayerScoreId },
+               new { onclick = "return confirm('Are you sure you wish to delete this player score?');" })
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Back to Score Board", "Index") 
+
+

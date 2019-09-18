@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ScoreBoard_Application.Models.Player_Score>  
+@{
+    ViewBag.Title = "Score Board";
+}
+
+<h2>Score Board</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Rank
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.PlayerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.Score)
+        </th>
+        <th></th>
+    </tr>
+    @{ int counter = 1;
+
+        foreach (var players in Model)
+        {
+        <tr>
+            <td> @counter</td>
+            <td>
+                @Html.DisplayFor(x => players.PlayerName)
+            </td>
+            <td>
+                @Html.DisplayFor(x => players.Score)
+            </td>
+        </tr>
+            counter =counter+1;
+        }
+    }   
+</table> 
+<p>
+    @Html.ActionLink("Add-Update Players/Score Details", "ShowPlayerDetails")
+</p>  

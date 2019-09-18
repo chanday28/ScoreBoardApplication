@@ -1,0 +1,38 @@
+﻿@model ScoreBoard_Application.Models.Player_Score  
+@{
+    ViewBag.Title = "Add New Player Detail";
+}
+
+<h2>Add New Player Detail</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(x => x.PlayerName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.PlayerName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.PlayerName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Score, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Score, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Score, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>  
+        </div>
+       
+}  
+<div>
+    @Html.ActionLink("Back to Player List", "ShowPlayerDetails") |
+    @Html.ActionLink("Back to Score Board", "Index")
+</div>
